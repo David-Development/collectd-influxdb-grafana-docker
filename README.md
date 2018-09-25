@@ -35,5 +35,5 @@ export MONITORING_MASTER_IP=XXX.XXX.XXX.XXX
 export MONITORING_MASTER_IP=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 
 docker stack rm cluster-monitor
-docker stack deploy --compose-file docker-compose.yml cluster-monitor
+docker stack deploy --with-registry-auth --compose-file docker-compose.yml cluster-monitor
 ```
