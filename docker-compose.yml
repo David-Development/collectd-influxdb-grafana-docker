@@ -1,15 +1,36 @@
-version: '2'
+version: '3'
 
 services:
   collectd:
-    image: fr3nd/collectd
-    privileged: true
-    network_mode: host
+    image: luhmer/cluster-monitor-collectd:0.1
+    build:
+      context: docker/collectd
+      dockerfile: Dockerfile
+    environment:
+     - INFLUX_DB_IP=${MONITORING_MASTER_IP}
     volumes:
       - /proc:/mnt/proc:ro
-      - ./docker/collectd/collectd.conf:/etc/collectd/collectd.conf
+      #- /var/run/docker.sock:/var/run/docker.sock:ro
+    hostname: "{{.Node.Hostname}}"
+    deploy:
+      # A global service is a service that runs one task on every node.
+      mode: global
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+    #deploy:
+    #  replicas: 1
+    #  restart_policy:
+    #    condition: on-failure
+    #  placement:
+    #    constraints:
+    #      - node.role == manager
+
   influxdb:
     image: influxdb:1.4
+    #user: "${UID}:${GID}"
     ports:
       - "8086:8086"
       - "25826:25826/udp"
@@ -17,8 +38,17 @@ services:
       - ./influxdb-data:/var/lib/influxdb
       - ./docker/influxdb/influxdb.conf:/etc/influxdb/influxdb.conf
       - ./docker/influxdb/types.db:/usr/share/collectd/types.db:ro
+      #- ./docker/influxdb/dockerplugin.db:/usr/share/collectd/types.db:ro
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
+
   grafana:
-    image: grafana/grafana:5.1.1
+    image: grafana/grafana
     user: "root"
     ports:
       - "3000:3000"
@@ -27,3 +57,11 @@ services:
       - ./docker/grafana/datasource.yaml:/etc/grafana/provisioning/datasources/datasource.yaml
       - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
       - ./docker/grafana/Dashboard.json:/var/lib/grafana/dashboards/Dashboard.json
+      - /etc/timezone:/etc/timezone:ro
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.role == manager
