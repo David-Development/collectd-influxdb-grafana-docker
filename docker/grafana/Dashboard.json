@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1537961688716,
+  "iteration": 1537963041981,
   "links": [],
   "panels": [
     {
@@ -135,7 +135,7 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1683,5 +1683,5 @@
   "timezone": "",
   "title": "Dashboard",
   "uid": "ayDEBgmmk",
-  "version": 2
+  "version": 3
 }
