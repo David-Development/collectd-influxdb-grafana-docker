@@ -33,6 +33,7 @@ export MONITORING_MASTER_IP=XXX.XXX.XXX.XXX
 
 # if you're on the master node, you can just use the following command
 export MONITORING_MASTER_IP=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
+echo "Using Master IP: $MONITORING_MASTER_IP"
 
 docker stack rm cluster-monitor
 docker stack deploy --with-registry-auth --compose-file docker-compose.yml cluster-monitor
