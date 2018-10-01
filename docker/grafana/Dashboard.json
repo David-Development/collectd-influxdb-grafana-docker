@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1537965141841,
+  "iteration": 1538379347184,
   "links": [],
   "panels": [
     {
@@ -44,7 +44,7 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "connected",
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -59,7 +59,7 @@
           "groupBy": [
             {
               "params": [
-                "10s"
+                "$__interval"
               ],
               "type": "time"
             },
@@ -1261,7 +1261,7 @@
       "lines": true,
       "linewidth": 1,
       "links": [],
-      "nullPointMode": "null",
+      "nullPointMode": "connected",
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1276,7 +1276,7 @@
           "groupBy": [
             {
               "params": [
-                "10s"
+                "$__interval"
               ],
               "type": "time"
             },
@@ -1658,7 +1658,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1689,5 +1689,5 @@
   "timezone": "",
   "title": "Dashboard",
   "uid": "ayDEBgmmk",
-  "version": 4
+  "version": 2
 }
