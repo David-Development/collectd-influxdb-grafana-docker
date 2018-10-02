@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1538379347184,
+  "iteration": 1538465099302,
   "links": [],
   "panels": [
     {
@@ -135,11 +135,12 @@
       },
       "yaxes": [
         {
+          "decimals": null,
           "format": "percent",
           "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
+          "max": "100",
+          "min": "0",
           "show": true
         },
         {
@@ -1658,7 +1659,7 @@
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
