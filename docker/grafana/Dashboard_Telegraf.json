@@ -25,7 +25,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1538660058868,
+  "iteration": 1539336985186,
   "links": [],
   "panels": [
     {
@@ -358,7 +358,7 @@
               },
               {
                 "params": [
-                  "$__interval"
+                  "10s"
                 ],
                 "type": "non_negative_derivative"
               }
@@ -408,7 +408,7 @@
               },
               {
                 "params": [
-                  "$__interval"
+                  "10s"
                 ],
                 "type": "non_negative_derivative"
               },
@@ -540,7 +540,7 @@
               },
               {
                 "params": [
-                  "$__interval"
+                  "10s"
                 ],
                 "type": "non_negative_derivative"
               }
@@ -589,7 +589,7 @@
               },
               {
                 "params": [
-                  "$__interval"
+                  "10s"
                 ],
                 "type": "non_negative_derivative"
               }
@@ -1033,7 +1033,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -1064,5 +1064,5 @@
   "timezone": "",
   "title": "Dashboard",
   "uid": "ayDEBgmmk",
-  "version": 1
+  "version": 2
 }
